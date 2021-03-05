@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 /* Import needed Components & CSS */
 import MovieList from '../MovieList/MovieList';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import AddMovie from '../AddMovie/AddMovie';
 import './App.css';
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
         </Route>
 
         {/* Add Movie page */}
+        <Route exact path="/addMovie">
+          <AddMovie />
+        </Route>
       </Router>
     </div>
   );
