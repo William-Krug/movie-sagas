@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-/* Import CSS */
+/* Import needed Components & CSS */
+import MovieListItem from '../MovieListItem/MovieListItem';
 import './MovieList.css';
 
 /**
@@ -22,21 +23,18 @@ function MovieList() {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
 
-  const goToDetails = () => {
-    console.log('*** in goToDetails() ***');
-  };
-
   return (
     <main>
       <h1>MovieList</h1>
       <section className="movies">
         {movies.map((movie) => {
-          return (
-            <div key={movie.id}>
-              <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title} onClick={goToDetails} />
-            </div>
-          );
+          return <MovieListItem key={movie.id} movie={movie} />;
+          // return (
+          //   <div key={movie.id}>
+          //     <h3>{movie.title}</h3>
+          //     <img src={movie.poster} alt={movie.title} onClick={goToDetails} />
+          //   </div>
+          // );
         })}
       </section>
     </main>
