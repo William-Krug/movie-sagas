@@ -4,7 +4,7 @@
 
 - [ ] Home / List Page
 
-  - [ ] take user to `/details` view when poster is clicked on
+  - [x] take user to `/details` view when poster is clicked on
   - [ ] route/link to go to `Add Movie Page`
 
 - [ ] Details Page

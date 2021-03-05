@@ -1,5 +1,6 @@
 /* Import Libraries */
 import React, { useEffect } from 'react';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 /* Import needed Components & CSS */
@@ -26,6 +27,7 @@ function MovieList() {
   return (
     <main>
       <h1>MovieList</h1>
+      {/* <Link to="/addMovie">Add Movie</Link> */}
       {/* Display each movie's title and poster */}
       <section className="movies">
         {movies.map((movie) => {

@@ -28,6 +28,7 @@ function MovieListItem({ movie }) {
 
   return (
     <div>
+      {/* Render movie title and poster */}
       <h3>{movie.title}</h3>
       <img src={movie.poster} alt={movie.title} onClick={goToDetails} />
     </div>
