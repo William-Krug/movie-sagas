@@ -26,15 +26,10 @@ function MovieList() {
   return (
     <main>
       <h1>MovieList</h1>
+      {/* Display each movie's title and poster */}
       <section className="movies">
         {movies.map((movie) => {
           return <MovieListItem key={movie.id} movie={movie} />;
-          // return (
-          //   <div key={movie.id}>
-          //     <h3>{movie.title}</h3>
-          //     <img src={movie.poster} alt={movie.title} onClick={goToDetails} />
-          //   </div>
-          // );
         })}
       </section>
     </main>
