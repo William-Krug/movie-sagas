@@ -38,7 +38,12 @@ function* getMovie(action) {
   console.log('\taction.payload.id:', action.payload.id);
 
   try {
-    const response = yield axios.get(`/api/movie/${action.payload.id}`);
+    const movie = yield axios.get(`/api/movie/${action.payload.id}`);
+    console.log('movie:', movie);
+    yield put({
+      type: 'SET_MOVIE',
+      payload: movie.data[0],
+    });
   } catch (error) {
     alert('An ERROR occurred during query. Please try again later');
     console.log('ERROR in GET `/details/:id`:', error);
@@ -52,6 +57,16 @@ const sagaMiddleware = createSagaMiddleware();
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Used to store single move returned from teh server
+const movie = (state = {}, action) => {
+  switch (action.type) {
+    case 'SET_MOVIE':
       return action.payload;
     default:
       return state;
@@ -72,6 +87,7 @@ const genres = (state = [], action) => {
 const storeInstance = createStore(
   combineReducers({
     movies,
+    movie,
     genres,
   }),
   // Add sagaMiddleware to our store

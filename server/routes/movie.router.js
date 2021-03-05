@@ -15,6 +15,11 @@ router.get('/', (req, res) => {
     });
 });
 
+/**
+ * GET Route for /api/movie/:id
+ *
+ * Returns a single record (movie) from the database
+ */
 router.get('/:id', (req, res) => {
   const movieId = req.params.id;
 

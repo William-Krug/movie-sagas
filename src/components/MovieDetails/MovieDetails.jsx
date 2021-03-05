@@ -12,6 +12,9 @@ function MovieDetails() {
   const params = useParams();
   const movieId = params;
 
+  /* Grab movie data from Redux store */
+  const movie = useSelector((store) => store.movie);
+
   // Breadcrumbs for testing and debugging
   console.log('*** in <MovieDetails /> ***');
   console.log('\tparams:', params);
@@ -24,7 +27,13 @@ function MovieDetails() {
     });
   }, []);
 
-  return <h2>In Movie Details</h2>;
+  return (
+    <section className="movie">
+      <img src={movie.poster} alt={movie.title} />
+      <h3>{movie.title}</h3>
+      <p>{movie.description}</p>
+    </section>
+  );
 }
 
 export default MovieDetails;
