@@ -1,5 +1,7 @@
 -- CREATE DATABASE "saga_movies_weekend"
-
+DROP TABLE IF EXISTS "movies_genres";
+DROP TABLE IF EXISTS "movies";
+DROP TABLE IF EXISTS "genres";
 
 CREATE TABLE "movies" (
   "id" SERIAL PRIMARY KEY,
