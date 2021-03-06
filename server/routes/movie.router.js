@@ -23,15 +23,23 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const movieId = req.params.id;
 
+  console.log('*** Router --> in GET /api/movie/:id ***');
+  console.log('\tmovieId:', movieId);
+
   const sqlQuery = `
-    SELECT * FROM "movies"
-    WHERE "id" = $1;
+    SELECT "movies".id, "movies".title, "movies".poster, "movies".description, JSON_AGG("genres".name) as "genres"
+    FROM "movies"
+    JOIN "movies_genres" ON "movies_genres".movie_id = "movies".id
+    JOIN "genres" ON "genres".id = "movies_genres".genre_id
+    WHERE "movies".id = $1
+    GROUP BY "movies".id
   `;
 
   pool
     .query(sqlQuery, [movieId])
     .then((dbResponse) => {
       console.log('Movie Obtained');
+      console.log('dbResponse:', dbResponse);
       res.send(dbResponse.rows);
     })
     .catch((error) => {

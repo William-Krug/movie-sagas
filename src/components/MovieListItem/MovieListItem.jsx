@@ -2,7 +2,7 @@
 import { useHistory } from 'react-router-dom';
 
 /**
- * Function renders movie title and poster image to DOM
+ * Function renders passed movie title and poster image to DOM
  *
  * movie object looks like:
  * {
@@ -20,7 +20,7 @@ function MovieListItem({ movie }) {
      the associated movie poster is clicked on */
   const goToDetails = () => {
     // Breadcrumbs for testing and debugging
-    console.log('*** in goToDetails() ***');
+    console.log('*** <MovieListItem /> in goToDetails() ***');
     console.log('\tmovie:', movie);
     // <Link to=`/details/&{}` />;
     history.push(`/details/${movie.id}`);

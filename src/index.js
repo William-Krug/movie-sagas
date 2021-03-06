@@ -33,20 +33,21 @@ function* fetchAllMovies() {
 /* Gets a specific movie for `/details/:id` page */
 function* getMovie(action) {
   // Breadcrumbs for testing and debugging
-  console.log('*** in getMovie() ***');
+  console.log('*** Saga --> in getMovie() ***');
   console.log('\taction.payload:', action.payload);
   console.log('\taction.payload.id:', action.payload.id);
 
   try {
     const movie = yield axios.get(`/api/movie/${action.payload.id}`);
-    console.log('movie:', movie);
+    console.log('*** dbResponse to getMovie() Saga ***');
+    console.log('\tmovie:', movie);
     yield put({
       type: 'SET_MOVIE',
       payload: movie.data[0],
     });
   } catch (error) {
     alert('An ERROR occurred during query. Please try again later');
-    console.log('ERROR in GET `/details/:id`:', error);
+    console.log('Saga --> ERROR in GET `/details/:id`:', error);
   }
 }
 
@@ -63,8 +64,17 @@ const movies = (state = [], action) => {
   }
 };
 
-// Used to store single move returned from teh server
-const movie = (state = {}, action) => {
+// Used to store single move returned from the server
+const movie = (
+  state = {
+    id: '',
+    title: '',
+    poster: '',
+    description: '',
+    genres: [],
+  },
+  action
+) => {
   switch (action.type) {
     case 'SET_MOVIE':
       return action.payload;

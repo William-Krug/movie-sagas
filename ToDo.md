@@ -2,10 +2,10 @@
 
 ## Base Mode
 
-- [ ] Home / List Page
+- [x] Home / List Page
 
   - [x] take user to `/details` view when poster is clicked on
-  - [ ] route/link to go to `Add Movie Page`
+  - [x] route/link to go to `Add Movie Page`
 
 - [ ] Details Page
   - [ ] show all details for selected movie
@@ -30,6 +30,7 @@
 
   - [ ] research cards
   - [ ] research grids
+  - [ ] consistent size movie posters
 
 - [ ] cod comments
 
