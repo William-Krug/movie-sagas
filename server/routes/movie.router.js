@@ -82,7 +82,7 @@ router.get('/:id', (req, res) => {
  *  title: Fight Club   -- string
  *  poster: https://www...    -- string (url)
  *  description: An insomniac office worker and a devil-may-care soapmaker..    -- string
- *  genre: Drama    -- string
+ *  genre_id: Drama    -- string
  * }
  */
 router.post('/', (req, res) => {

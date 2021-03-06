@@ -30,24 +30,38 @@ function* rootSaga() {
 }
 
 /**
+ * Function collects the movie object from the DOM and POSTs it to the
+ * database to be stored.
  *
- * @param {object} action
+ * movie object looks lik:
+ * {
+ *  title: Fight Club   -- string
+ *  poster: https://www...    -- string (url)
+ *  description: An insomniac office worker and a devil-may-care soapmaker..    -- string
+ *  genre_id: Drama    -- string
+ * }
  */
 function* addMovie(action) {
   // Breadcrumbs for testing and debugging
   console.log('*** Saga -> addMovie() ***');
   console.log('action.payload:', action.payload);
 
+  // POST movie to DB
   try {
     yield axios.post('/api/movie', action.payload);
 
     yield put({ type: 'FETCH_MOVIES' });
   } catch (error) {
+    // Breadcrumbs for testing and debugging
     alert('An ERROR occurred during query. Please try again later.');
     console.log('!!! addMovie() ERROR POST /api/movie');
   }
 }
 
+/**
+ * Function makes a GET request to the database for all movies
+ * in the "movies" table
+ */
 function* fetchAllMovies(action) {
   // get all movies from the DB
   try {
@@ -55,14 +69,21 @@ function* fetchAllMovies(action) {
     console.log('get all:', movies.data);
     yield put({ type: 'SET_MOVIES', payload: movies.data });
   } catch {
+    // Breadcrumbs for testing and debugging
+    alert('An ERROR occurred during query. Please try again later.');
     console.log('get all error');
   }
 }
 
+/**
+ * Function makes a GET request to the database for all genres
+ * in the "genres" table
+ */
 function* fetchGenres(action) {
   // Breadcrumbs for testing and debugging
   console.log('*** Saga -> in fetchGenres() ***');
 
+  // get all genres from the DB
   try {
     const genres = yield axios.get('/api/genre');
     yield put({
@@ -70,17 +91,25 @@ function* fetchGenres(action) {
       payload: genres.data,
     });
   } catch (error) {
+    // Breadcrumbs for testing and debugging
+    alert('An ERROR occurred during query. Please try again later.');
     console.log('!!! fetchGenres ERROR GET /api/genre !!!');
   }
 }
 
-/* Gets a specific movie for `/details/:id` page */
+/**
+ * Function GETs a specific movie for the `/details/:id` page
+ *
+ * All of the selected movie's details from both the "movies"
+ * and "movies_genres" table are returned
+ */
 function* getMovie(action) {
   // Breadcrumbs for testing and debugging
   console.log('*** Saga --> in getMovie() ***');
   console.log('\taction.payload:', action.payload);
   console.log('\taction.payload.id:', action.payload.id);
 
+  // GET movie details from DB
   try {
     const movie = yield axios.get(`/api/movie/${action.payload.id}`);
     console.log('*** dbResponse to getMovie() Saga ***');
@@ -90,6 +119,7 @@ function* getMovie(action) {
       payload: movie.data[0],
     });
   } catch (error) {
+    // Breadcrumbs for testing and debugging
     alert('An ERROR occurred during query. Please try again later');
     console.log('Saga -> ERROR in GET `/details/:id`:', error);
   }
