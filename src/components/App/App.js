@@ -7,6 +7,8 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 import AddMovie from '../AddMovie/AddMovie';
 import './App.css';
 
+const verbose = true;
+
 function App() {
   return (
     <div className="App">
@@ -17,17 +19,17 @@ function App() {
           <Link to="/addMovie">Add Movie</Link>
         </nav>
         <Route path="/" exact>
-          <MovieList />
+          <MovieList verbose={verbose} />
         </Route>
 
         {/* Details page */}
         <Route exact path="/details/:id">
-          <MovieDetails />
+          <MovieDetails verbose={verbose} />
         </Route>
 
         {/* Add Movie page */}
         <Route exact path="/addMovie">
-          <AddMovie />
+          <AddMovie verbose={verbose} />
         </Route>
       </Router>
     </div>

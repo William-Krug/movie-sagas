@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
  * }
  * @param {object} movie  details pertaining to the specific movie passed
  */
-function MovieListItem({ movie }) {
+function MovieListItem({ movie, verbose }) {
   const history = useHistory();
 
   /* Takes user to a `/details` page about the movie when

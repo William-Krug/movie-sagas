@@ -13,7 +13,7 @@ import './MovieList.css';
  * Users can drill into movie details by clicking on a
  * movie poster
  */
-function MovieList() {
+function MovieList({ verbose }) {
   const dispatch = useDispatch();
 
   /* Grab movie data from Redux store */
@@ -30,7 +30,9 @@ function MovieList() {
       {/* Display each movie's title and poster */}
       <section className="movies">
         {movies.map((movie) => {
-          return <MovieListItem key={movie.id} movie={movie} />;
+          return (
+            <MovieListItem key={movie.id} movie={movie} verbose={verbose} />
+          );
         })}
       </section>
     </main>

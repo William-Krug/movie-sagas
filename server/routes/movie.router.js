@@ -19,6 +19,14 @@ router.get('/', (req, res) => {
  * GET Route for /api/movie/:id
  *
  * Returns a single record (movie) from the database
+ * Record looks like:
+ * {
+ *  id:
+ *  title:
+ *  poster:
+ *  description:
+ *  genres:
+ * }
  */
 router.get('/:id', (req, res) => {
   const movieId = req.params.id;
