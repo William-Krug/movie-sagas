@@ -7,6 +7,7 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 import AddMovie from '../AddMovie/AddMovie';
 import './App.css';
 
+// Global variable used for testing and debugging
 const verbose = true;
 
 function App() {

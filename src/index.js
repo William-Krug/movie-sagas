@@ -1,6 +1,6 @@
+/* Import Libraries */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './components/App/App.js';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
@@ -11,15 +11,28 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-// Create the rootSaga generator function
+/* Import CSS */
+import './index.css';
+
+/* Create the rootSaga generator function */
 function* rootSaga() {
+  // Add movie to database
+  yield takeEvery('ADD_MOVIE', addMovie);
+
+  // Get all genres
+  yield takeEvery('FETCH_GENRES', fetchGenres);
+
+  // Get all movies
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
 
   // Get single movie details
   yield takeEvery('GET_MOVIE', getMovie);
+}
 
-  // Get all genres
-  yield takeEvery('FETCH_GENRES', fetchGenres);
+function* addMovie(action) {
+  // Breadcrumbs for testing and debugging
+  console.log('*** Saga -> addMovie() ***');
+  console.log('action.payload:', action.payload);
 }
 
 function* fetchAllMovies(action) {

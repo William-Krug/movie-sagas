@@ -6,8 +6,19 @@ import { useParams } from 'react-router-dom';
 /**
  * Function renders the passed movie's poster, title,
  * and description on page load
+ *
+ * movie object looks like:
+ * {
+ *  id: 1   -- number
+ *  title: Avatar   -- string
+ *  poster: images/avatar.jpeg    -- string (url to movie poster)
+ *  description: Avatar is a...   -- string
+ *  genres: [Adventure, Biographical, Comedy]   -- array
+ * }
+ *
+ * @param {boolean} verbose  global variable used for testing and debugging
  */
-function MovieDetails() {
+function MovieDetails({ verbose }) {
   const dispatch = useDispatch();
   const params = useParams();
   const movieId = params;
@@ -15,9 +26,11 @@ function MovieDetails() {
   /* Grab movie data from Redux store */
   const movie = useSelector((store) => store.movie);
 
-  // Breadcrumbs for testing and debugging
-  console.log('*** in <MovieDetails /> ***');
-  console.log('\tparams:', params);
+  /* Breadcrumbs for testing and debugging */
+  if (verbose) {
+    console.log('*** in <MovieDetails /> ***');
+    console.log('\tparams:', params);
+  }
 
   /* Load movie details */
   useEffect(() => {

@@ -1,32 +1,70 @@
 /* Import Libraries */
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-function AddMovie() {
+/**
+ * Function allows a user to add their own movie to the database
+ *
+ * @param {boolean} verbose  global variable used for testing and debugging
+ */
+function AddMovie({ verbose }) {
+  const history = useHistory();
   const dispatch = useDispatch();
 
+  /* Local state variables used for capturing form input */
   const [movieTitle, setMovieTitle] = useState('');
   const [moviePoster, setMoviePoster] = useState('');
   const [movieDescription, setMovieDescription] = useState('');
   const [movieGenre, setMovieGenre] = useState('');
 
+  /* Grab list of possible movie genres from Redux store */
   const genres = useSelector((store) => store.genres);
 
+  /* Load movie genres list */
   useEffect(() => {
     dispatch({
       type: 'FETCH_GENRES',
     });
   }, []);
 
+  /* Breadcrumbs for testing and debugging */
+  if (verbose) {
+    console.log('*** in <AddMovie />');
+  }
+
+  /* Function captures form input values and sends data to
+     the database to be stored in the "movies" table */
   const addMovie = (event) => {
+    // Keep page from refreshing on form submission
     event.preventDefault();
-    console.log('*** <AddMovie /> in addMovie() ***');
+
+    // Breadcrumbs for testing and debugging
+    if (verbose) {
+      console.log('*** <AddMovie /> in addMovie() ***');
+    }
+
+    // Ping saga to add movie object to the database
+    dispatch({
+      type: 'ADD_MOVIE',
+      payload: {
+        title: movieTitle,
+        poster: moviePoster,
+        description: movieDescription,
+        genre: movieGenre,
+      },
+    });
+
+    // Navigate to movie list page
+    history.push('/');
   };
 
   return (
     <section>
+      {/* Add movie form */}
       <form onSubmit={addMovie}>
+        {/* Movie Title */}
         <div>
           <label for="movieTitle">Title</label>
           <input
@@ -39,6 +77,7 @@ function AddMovie() {
           />
         </div>
 
+        {/* Movie Poster */}
         <div>
           <label for="moviePoster">Poster URL</label>
           <input
@@ -51,6 +90,7 @@ function AddMovie() {
           />
         </div>
 
+        {/* Movie Description */}
         <div>
           <label for="movieDescription">Description</label>
           <textarea
@@ -64,6 +104,7 @@ function AddMovie() {
           ></textarea>
         </div>
 
+        {/* Movie Genre */}
         <div>
           <label for="movieGenre">Genre</label>
           <select
@@ -73,8 +114,12 @@ function AddMovie() {
             onChange={(event) => setMovieGenre(event.target.value)}
           >
             <option value="">Select a Genre</option>
-            {genres.map((genre) => {
-              return <option value={genre.id}>{genre.name}</option>;
+            {genres.map((genre, i) => {
+              return (
+                <option key={i} value={genre.id}>
+                  {genre.name}
+                </option>
+              );
             })}
           </select>
         </div>
