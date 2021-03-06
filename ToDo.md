@@ -18,15 +18,15 @@
 
 ### Add Movie Page
 
-- [ ] input field for movie title
-- [ ] input field for movie poster image
-- [ ] textarea for move description
-- [ ] dropdown for genres
-- [ ] `Cancel` button
-  - [ ] bring the user to the Home/List page
-- [ ] `Save` button
-  - [ ] updates the title and description in the database and bring the user to the Home/List page
-  - [ ] Home/List page should refresh with updated movie
+- [x] input field for movie title
+- [x] input field for movie poster image
+- [x] textarea for move description
+- [x] dropdown for genres
+- [x] `Cancel` button
+  - [x] bring the user to the Home/List page
+- [x] `Save` button
+  - [x] updates the title and description in the database and bring the user to the Home/List page
+  - [x] Home/List page should refresh with updated movie
 
 ### styling
 

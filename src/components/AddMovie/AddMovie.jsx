@@ -1,7 +1,7 @@
 /* Import Libraries */
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 /**
@@ -52,10 +52,17 @@ function AddMovie({ verbose }) {
         title: movieTitle,
         poster: moviePoster,
         description: movieDescription,
-        genre: movieGenre,
+        genre_id: movieGenre,
       },
     });
 
+    // Navigate to movie list page
+    history.push('/');
+  };
+
+  /* Function "cancels" add movie form input and takes
+     the user back to the movie list page */
+  const cancelAddMovie = () => {
     // Navigate to movie list page
     history.push('/');
   };
@@ -66,7 +73,7 @@ function AddMovie({ verbose }) {
       <form onSubmit={addMovie}>
         {/* Movie Title */}
         <div>
-          <label for="movieTitle">Title</label>
+          <label htmlFor="movieTitle">Title</label>
           <input
             type="text"
             name="movieTitle"
@@ -79,7 +86,7 @@ function AddMovie({ verbose }) {
 
         {/* Movie Poster */}
         <div>
-          <label for="moviePoster">Poster URL</label>
+          <label htmlFor="moviePoster">Poster URL</label>
           <input
             type="text"
             name="moviePoster"
@@ -92,7 +99,7 @@ function AddMovie({ verbose }) {
 
         {/* Movie Description */}
         <div>
-          <label for="movieDescription">Description</label>
+          <label htmlFor="movieDescription">Description</label>
           <textarea
             name="movieDescription"
             id="movieDescription"
@@ -106,7 +113,7 @@ function AddMovie({ verbose }) {
 
         {/* Movie Genre */}
         <div>
-          <label for="movieGenre">Genre</label>
+          <label htmlFor="movieGenre">Genre</label>
           <select
             name="movieGenre"
             id="movieGenre"
@@ -123,8 +130,9 @@ function AddMovie({ verbose }) {
             })}
           </select>
         </div>
-        <button>Add Movie</button>
+        <button>Save</button>
       </form>
+      <Link to="/">Cancel</Link>
     </section>
   );
 }

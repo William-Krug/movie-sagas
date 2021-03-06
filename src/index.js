@@ -29,10 +29,23 @@ function* rootSaga() {
   yield takeEvery('GET_MOVIE', getMovie);
 }
 
+/**
+ *
+ * @param {object} action
+ */
 function* addMovie(action) {
   // Breadcrumbs for testing and debugging
   console.log('*** Saga -> addMovie() ***');
   console.log('action.payload:', action.payload);
+
+  try {
+    yield axios.post('/api/movie', action.payload);
+
+    yield put({ type: 'FETCH_MOVIES' });
+  } catch (error) {
+    alert('An ERROR occurred during query. Please try again later.');
+    console.log('!!! addMovie() ERROR POST /api/movie');
+  }
 }
 
 function* fetchAllMovies(action) {
@@ -78,7 +91,7 @@ function* getMovie(action) {
     });
   } catch (error) {
     alert('An ERROR occurred during query. Please try again later');
-    console.log('Saga --> ERROR in GET `/details/:id`:', error);
+    console.log('Saga -> ERROR in GET `/details/:id`:', error);
   }
 }
 
