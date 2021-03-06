@@ -1,5 +1,14 @@
 function AddMovie() {
-  return <h1>In Add Movie</h1>;
+  return (
+    <section>
+      <form>
+        <label></label>
+        <input type="text" />
+        <label></label>
+        <input type="text" />
+      </form>
+    </section>
+  );
 }
 
 export default AddMovie;

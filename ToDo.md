@@ -2,37 +2,39 @@
 
 ## Base Mode
 
-- [x] Home / List Page
+### Home / List Page
 
-  - [x] take user to `/details` view when poster is clicked on
-  - [x] route/link to go to `Add Movie Page`
+- [x] take user to `/details` view when poster is clicked on
+- [x] route/link to go to `Add Movie Page`
 
-- [ ] Details Page
-  - [ ] show all details for selected movie
-    - [ ] including all genres
-  - [ ] store in redux
-  - [ ] `GET` request for a specific move (`req.params` and `:id`)
-  - [ ] `Back to List` button
-    - [ ] bring user to the Home/List Page
-- [ ] Add Movie Page
+### Details Page
 
-  - [ ] input field for movie title
-  - [ ] input field for movie poster image
-  - [ ] textarea for move description
-  - [ ] dropdown for genres
-  - [ ] `Cancel` button
-    - [ ] bring the user to the Home/List page
-  - [ ] `Save` button
-    - [ ] updates the title and description in the database and bring the user to the Home/List page
-    - [ ] Home/List page should refresh with updated movie
+- [x] show all details for selected movie
+  - [x] including all genres
+- [x] store in redux
+- [x] `GET` request for a specific move (`req.params` and `:id`)
+- [x] `Back to List` button
+  - [x] bring user to the Home/List Page
 
-- [ ] styling
+### Add Movie Page
 
-  - [ ] research cards
-  - [ ] research grids
-  - [ ] consistent size movie posters
+- [ ] input field for movie title
+- [ ] input field for movie poster image
+- [ ] textarea for move description
+- [ ] dropdown for genres
+- [ ] `Cancel` button
+  - [ ] bring the user to the Home/List page
+- [ ] `Save` button
+  - [ ] updates the title and description in the database and bring the user to the Home/List page
+  - [ ] Home/List page should refresh with updated movie
 
-- [ ] cod comments
+### styling
+
+- [ ] research cards
+- [ ] research grids
+- [ ] consistent size movie posters
+
+- [ ] code comments
 
 - [ ] README
 

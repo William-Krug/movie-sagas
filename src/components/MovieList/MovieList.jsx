@@ -27,7 +27,6 @@ function MovieList() {
   return (
     <main>
       <h1>MovieList</h1>
-      <Link to="/addMovie">Add Movie</Link>
       {/* Display each movie's title and poster */}
       <section className="movies">
         {movies.map((movie) => {

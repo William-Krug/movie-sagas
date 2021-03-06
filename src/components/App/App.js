@@ -1,5 +1,5 @@
 /* Import Libraries */
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Link, Route } from 'react-router-dom';
 
 /* Import needed Components & CSS */
 import MovieList from '../MovieList/MovieList';
@@ -12,6 +12,10 @@ function App() {
     <div className="App">
       <h1>The Movies Saga!</h1>
       <Router>
+        <nav>
+          <Link to="/">Movie List</Link>
+          <Link to="/addMovie">Add Movie</Link>
+        </nav>
         <Route path="/" exact>
           <MovieList />
         </Route>

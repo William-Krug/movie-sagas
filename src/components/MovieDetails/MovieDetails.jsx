@@ -29,14 +29,23 @@ function MovieDetails() {
 
   return (
     <section className="movie">
+      {/* Movie poster */}
       <img src={movie.poster} alt={movie.title} />
-      <h3>{movie.title}</h3>
-      <p>{movie.description}</p>
+
+      {/* Movie title and description */}
       <section>
-        <h4>Genres:</h4>{' '}
+        <h3>{movie.title}</h3>
+        <p>{movie.description}</p>
+      </section>
+
+      {/* Movie genre(s) */}
+      <section>
         <span>
-          {movie.genres.map((genre, i) => {
-            return genre + '  ';
+          <h4>Genres:</h4>
+        </span>
+        <span>
+          {movie.genres.map((genre) => {
+            return genre + ',  ';
           })}
         </span>
       </section>
