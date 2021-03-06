@@ -10,19 +10,29 @@ import { useHistory } from 'react-router-dom';
  *  title: Avatar   -- string
  *  poster: images/avatar.jpeg    -- string (url to movie poster)
  *  description: Avatar is a...   -- string
+ *  genres: [Adventure, Biographical, Comedy]   -- array
  * }
  * @param {object} movie  details pertaining to the specific movie passed
+ * @param {boolean} verbose  global variable used for testing and debugging
  */
-function MovieListItem({ movie }) {
+function MovieListItem({ movie, verbose }) {
   const history = useHistory();
+
+  /* Breadcrumbs for testing and debugging */
+  if (verbose) {
+    console.log('*** in <MovieListItem /> ***');
+  }
 
   /* Takes user to a `/details` page about the movie when
      the associated movie poster is clicked on */
   const goToDetails = () => {
     // Breadcrumbs for testing and debugging
-    console.log('*** <MovieListItem /> in goToDetails() ***');
-    console.log('\tmovie:', movie);
-    // <Link to=`/details/&{}` />;
+    if (verbose) {
+      console.log('*** <MovieListItem /> in goToDetails() ***');
+      console.log('\tmovie:', movie);
+    }
+
+    // Navigate to `/details` page for selected movie
     history.push(`/details/${movie.id}`);
   };
 

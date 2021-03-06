@@ -1,6 +1,5 @@
 /* Import Libraries */
 import React, { useEffect } from 'react';
-import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 /* Import needed Components & CSS */
@@ -12,8 +11,10 @@ import './MovieList.css';
  *
  * Users can drill into movie details by clicking on a
  * movie poster
+ *
+ * @param {boolean} verbose  global variable used for testing and debugging
  */
-function MovieList() {
+function MovieList({ verbose }) {
   const dispatch = useDispatch();
 
   /* Grab movie data from Redux store */
@@ -24,13 +25,21 @@ function MovieList() {
     dispatch({ type: 'FETCH_MOVIES' });
   }, []);
 
+  /* Breadcrumbs for testing and debugging */
+  if (verbose) {
+    console.log('*** in <MovieList /> ***');
+  }
+
   return (
     <main>
       <h1>MovieList</h1>
+
       {/* Display each movie's title and poster */}
       <section className="movies">
         {movies.map((movie) => {
-          return <MovieListItem key={movie.id} movie={movie} />;
+          return (
+            <MovieListItem key={movie.id} movie={movie} verbose={verbose} />
+          );
         })}
       </section>
     </main>
