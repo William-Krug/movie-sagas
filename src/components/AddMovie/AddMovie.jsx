@@ -60,13 +60,6 @@ function AddMovie({ verbose }) {
     history.push('/');
   };
 
-  /* Function "cancels" add movie form input and takes
-     the user back to the movie list page */
-  const cancelAddMovie = () => {
-    // Navigate to movie list page
-    history.push('/');
-  };
-
   return (
     <section>
       {/* Add movie form */}
@@ -132,6 +125,9 @@ function AddMovie({ verbose }) {
         </div>
         <button>Save</button>
       </form>
+
+      {/* Button (link) to cancel adding a new movie
+          Takes user back to movie list page */}
       <Link to="/">Cancel</Link>
     </section>
   );
