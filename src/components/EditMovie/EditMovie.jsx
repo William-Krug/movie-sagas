@@ -1,7 +1,7 @@
 /* Import Libraries */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 /**
  * Function renders the passed movie's details so that
@@ -50,6 +50,7 @@ function EditMovie({ verbose }) {
     dispatch({
       type: 'UPDATE_MOVIE',
       payload: {
+        id: movie.id,
         title: editTitle,
         poster: editPoster,
         description: editDescription,
@@ -64,6 +65,7 @@ function EditMovie({ verbose }) {
   return (
     <section>
       <h2>Edit Movie</h2>
+      <img src={movie.poster} alt={movie.title} />
       <form onSubmit={updateMovie}>
         {/* Movie Title */}
         <div>
@@ -79,7 +81,7 @@ function EditMovie({ verbose }) {
         </div>
 
         {/* Movie Poster */}
-        <div>
+        {/* <div>
           <label htmlFor="moviePoster">Poster URL</label>
           <input
             type="text"
@@ -89,7 +91,7 @@ function EditMovie({ verbose }) {
             // placeholder="https://www..."
             onChange={(event) => setEditPoster(event.target.value)}
           />
-        </div>
+        </div> */}
 
         {/* Movie Description */}
         <div>
@@ -106,12 +108,12 @@ function EditMovie({ verbose }) {
         </div>
 
         {/* Movie Genre */}
-        <div>
+        {/* <div>
           <label htmlFor="movieGenre">Genre</label>
           <select
             name="movieGenre"
             id="movieGenre"
-            value={movie.genre[0]}
+            value={editGenre}
             onChange={(event) => setEditGenre(event.target.value)}
           >
             <option value="">Select a Genre</option>
@@ -123,7 +125,7 @@ function EditMovie({ verbose }) {
               );
             })}
           </select>
-        </div>
+        </div> */}
         <button>Save</button>
       </form>
     </section>

@@ -142,4 +142,52 @@ router.post('/', (req, res) => {
     });
 });
 
+/**
+ * PUT route for `/api/movie/:id`
+ *
+ * Updates a movie's title and/or description
+ *
+ * req.body looks like:
+ * {
+ *  id: 1   --number (movie's id in db)
+ *  title: Blue Aliens   -- string
+ *  poster: https://wwww...   -- string (url)
+ *  description: I'm blue daba dee daba die...    -- string
+ *  genre_id:   -- string
+ * }
+ */
+router.put('/:id', (req, res) => {
+  // Breadcrumbs for testing and debugging
+  console.log('*** Router -> in PUT /api/movie/:id ***');
+  console.log('\treq.body:', req.body);
+
+  // SQL query/transaction
+  const sqlQuery = `
+  UPDATE "movies"
+  SET "title" = $1
+  SET "description" = $2
+  WHERE "id" = $3
+  `;
+
+  // Data isolation
+  const queryArguments = [
+    req.body.title, // $1
+    req.body.description, // $2
+    req.body.id, // $3
+  ];
+
+  pool
+    .query(sqlQuery, queryArguments)
+    .then((dbResponse) => {
+      // Breadcrumbs for testing and debugging
+      console.log('Movie Updated');
+      console.log('dbResponse:', dbResponse);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`*** Error making db query ${sqlQuery} ***`, error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

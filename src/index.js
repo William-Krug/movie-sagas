@@ -27,6 +27,9 @@ function* rootSaga() {
 
   // Get single movie details
   yield takeEvery('GET_MOVIE', getMovie);
+
+  //Get updated movie details
+  yield takeEvery('UPDATE_MOVIE', updateMovie);
 }
 
 /**
@@ -122,6 +125,24 @@ function* getMovie(action) {
     // Breadcrumbs for testing and debugging
     alert('An ERROR occurred during query. Please try again later');
     console.log('Saga -> ERROR in GET `/details/:id`:', error);
+  }
+}
+
+/**
+ * Function update's a movie's Title and/or Description via
+ * PUT query
+ */
+function* updateMovie(action) {
+  // Breadcrumbs for testing and debugging
+  console.log('*** Saga -> in updateMovie() ***');
+
+  // PUT updated movie details in DB
+  try {
+    yield axios.put(`/api/movie/${action.payload.id}`, action.payload);
+  } catch (error) {
+    // Breadcrumbs for testing and debugging
+    alert('An ERROR occurred during query. Please try again later');
+    console.log('Saga -> ERROR in PUT `/api/movie/:id` :', error);
   }
 }
 
