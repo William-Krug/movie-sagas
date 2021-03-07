@@ -105,7 +105,7 @@ function* fetchGenres(action) {
  */
 function* getMovie(action) {
   // Breadcrumbs for testing and debugging
-  console.log('*** Saga --> in getMovie() ***');
+  console.log('*** Saga -> in getMovie() ***');
   console.log('\taction.payload:', action.payload);
   console.log('\taction.payload.id:', action.payload.id);
 

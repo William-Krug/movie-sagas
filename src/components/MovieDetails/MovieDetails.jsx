@@ -1,7 +1,7 @@
 /* Import Libraries */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 /**
  * Function renders the passed movie's poster, title,
@@ -20,6 +20,7 @@ import { useParams } from 'react-router-dom';
  */
 function MovieDetails({ verbose }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const params = useParams();
   const movieId = params;
 
@@ -39,6 +40,24 @@ function MovieDetails({ verbose }) {
       payload: movieId,
     });
   }, []);
+
+  /* Function captures movie details to be populated on
+     edit movie page */
+  const editMovie = () => {
+    // Breadcrumbs for testing and debugging
+    if (verbose) {
+      console.log('*** <MovieDetails /> in editMovie() ***');
+    }
+
+    // Store the movie to be edited in the <EditMovie /> component in the Redux store
+    dispatch({
+      type: 'EDIT_MOVIE',
+      payload: movieId,
+    });
+
+    // Navigate to `/editMovie` page
+    history.push('/editMovie');
+  };
 
   return (
     <section className="movie">
@@ -62,6 +81,9 @@ function MovieDetails({ verbose }) {
           })}
         </span>
       </section>
+
+      {/* Button (link) to edit page */}
+      <button onClick={editMovie}>Edit</button>
     </section>
   );
 }
