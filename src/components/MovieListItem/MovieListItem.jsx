@@ -37,10 +37,15 @@ function MovieListItem({ movie, verbose }) {
   };
 
   return (
-    <div>
+    <div className="movie-details">
       {/* Render movie title and poster */}
-      <h3>{movie.title}</h3>
-      <img src={movie.poster} alt={movie.title} onClick={goToDetails} />
+      <h3 className="movie-title">{movie.title}</h3>
+      <img
+        src={movie.poster}
+        alt={movie.title}
+        className="poster-size"
+        onClick={goToDetails}
+      />
     </div>
   );
 }
