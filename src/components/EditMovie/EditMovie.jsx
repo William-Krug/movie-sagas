@@ -27,10 +27,10 @@ function EditMovie({ verbose }) {
   const genres = useSelector((store) => store.genres);
 
   /* Local state variables used for capturing form input */
-  const [editTitle, setEditTitle] = useState('');
-  const [editPoster, setEditPoster] = useState('');
-  const [editDescription, setEditDescription] = useState('');
-  const [editGenre, setEditGenre] = useState('');
+  const [editTitle, setEditTitle] = useState(movie.title);
+  const [editPoster, setEditPoster] = useState(movie.poster);
+  const [editDescription, setEditDescription] = useState(movie.description);
+  const [editGenre, setEditGenre] = useState(movie.genre);
 
   /* Breadcrumbs for testing and debugging */
   if (verbose) {
@@ -74,7 +74,7 @@ function EditMovie({ verbose }) {
             type="text"
             name="movieTitle"
             id="movieTitle"
-            value={movie.title}
+            value={editTitle}
             // placeholder="Fight Club"
             onChange={(event) => setEditTitle(event.target.value)}
           />
@@ -87,7 +87,7 @@ function EditMovie({ verbose }) {
             type="text"
             name="moviePoster"
             id="moviePoster"
-            value={movie.poster}
+            value={editPoster}
             // placeholder="https://www..."
             onChange={(event) => setEditPoster(event.target.value)}
           />
@@ -99,7 +99,7 @@ function EditMovie({ verbose }) {
           <textarea
             name="movieDescription"
             id="movieDescription"
-            value={movie.description}
+            value={editDescription}
             // placeholder="An insomniac office worker and a devil-may-care soapmaker..."
             rows="10"
             cols="50"

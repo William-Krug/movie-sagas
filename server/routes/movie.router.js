@@ -156,7 +156,7 @@ router.post('/', (req, res) => {
  *  genre_id:   -- string
  * }
  */
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
   // Breadcrumbs for testing and debugging
   console.log('*** Router -> in PUT /api/movie/:id ***');
   console.log('\treq.body:', req.body);
@@ -164,9 +164,8 @@ router.put('/:id', (req, res) => {
   // SQL query/transaction
   const sqlQuery = `
   UPDATE "movies"
-  SET "title" = $1
-  SET "description" = $2
-  WHERE "id" = $3
+  SET "title" = $1, "description" = $2
+  WHERE "id" = $3;
   `;
 
   // Data isolation
@@ -176,12 +175,13 @@ router.put('/:id', (req, res) => {
     req.body.id, // $3
   ];
 
+  // Update db
   pool
     .query(sqlQuery, queryArguments)
     .then((dbResponse) => {
       // Breadcrumbs for testing and debugging
-      console.log('Movie Updated');
-      console.log('dbResponse:', dbResponse);
+      // console.log('Movie Updated');
+      // console.log('dbResponse:', dbResponse);
       res.sendStatus(200);
     })
     .catch((error) => {

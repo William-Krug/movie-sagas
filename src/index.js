@@ -138,7 +138,8 @@ function* updateMovie(action) {
 
   // PUT updated movie details in DB
   try {
-    yield axios.put(`/api/movie/${action.payload.id}`, action.payload);
+    yield axios.put('/api/movie/', action.payload);
+    yield put({ type: 'FETCH_MOVIES' });
   } catch (error) {
     // Breadcrumbs for testing and debugging
     alert('An ERROR occurred during query. Please try again later');
