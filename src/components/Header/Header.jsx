@@ -16,8 +16,12 @@ function Header({ verbose }) {
     <header>
       <h1>The Movies Saga!</h1>
       <nav>
-        <Link to="/">Movie List</Link>
-        <Link to="/addMovie">Add Movie</Link>
+        <Link className="nav-link" to="/">
+          Movie List
+        </Link>
+        <Link className="nav-link" to="/addMovie">
+          Add Movie
+        </Link>
       </nav>
     </header>
   );

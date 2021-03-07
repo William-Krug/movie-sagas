@@ -32,7 +32,7 @@ function MovieList({ verbose }) {
 
   return (
     <main>
-      <h1>MovieList</h1>
+      <h2>MovieList</h2>
 
       {/* Display each movie's title and poster */}
       <section className="movies">

@@ -63,13 +63,17 @@ function EditMovie({ verbose }) {
   };
 
   return (
-    <section>
+    <section className="edit-page">
       <h2>Edit Movie</h2>
-      <img src={movie.poster} alt={movie.title} />
+      <img
+        src={movie.poster}
+        alt={movie.title}
+        className="details-poster-size"
+      />
       <form onSubmit={updateMovie}>
         {/* Movie Title */}
         <div>
-          <label htmlFor="movieTitle">Title</label>
+          <label htmlFor="movieTitle">Title:</label>
           <input
             type="text"
             name="movieTitle"
@@ -82,7 +86,7 @@ function EditMovie({ verbose }) {
 
         {/* Movie Poster */}
         {/* <div>
-          <label htmlFor="moviePoster">Poster URL</label>
+          <label htmlFor="moviePoster">Poster URL:</label>
           <input
             type="text"
             name="moviePoster"
@@ -95,7 +99,7 @@ function EditMovie({ verbose }) {
 
         {/* Movie Description */}
         <div>
-          <label htmlFor="movieDescription">Description</label>
+          <label htmlFor="movieDescription">Description:</label>
           <textarea
             name="movieDescription"
             id="movieDescription"
@@ -109,7 +113,7 @@ function EditMovie({ verbose }) {
 
         {/* Movie Genre */}
         {/* <div>
-          <label htmlFor="movieGenre">Genre</label>
+          <label htmlFor="movieGenre">Genre:</label>
           <select
             name="movieGenre"
             id="movieGenre"
@@ -126,7 +130,7 @@ function EditMovie({ verbose }) {
             })}
           </select>
         </div> */}
-        <button>Save</button>
+        <button className="save-button">Save</button>
       </form>
     </section>
   );

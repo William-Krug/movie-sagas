@@ -62,7 +62,11 @@ function MovieDetails({ verbose }) {
   return (
     <section className="movie">
       {/* Movie poster */}
-      <img src={movie.poster} alt={movie.title} />
+      <img
+        src={movie.poster}
+        alt={movie.title}
+        className="details-poster-size"
+      />
 
       {/* Movie title and description */}
       <section>
@@ -73,17 +77,23 @@ function MovieDetails({ verbose }) {
       {/* Movie genre(s) */}
       <section>
         <span>
-          <h4>Genres:</h4>
+          <h4>Genres: </h4>
         </span>
         <span>
           {movie.genres.map((genre) => {
-            return genre + ',  ';
+            return (
+              <span>
+                <p>{genre + ',  '}</p>
+              </span>
+            );
           })}
         </span>
       </section>
 
       {/* Button (link) to edit page */}
-      <button onClick={editMovie}>Edit</button>
+      <button className="edit-button" onClick={editMovie}>
+        Edit
+      </button>
     </section>
   );
 }
