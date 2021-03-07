@@ -61,12 +61,12 @@ function AddMovie({ verbose }) {
   };
 
   return (
-    <section>
+    <section className="add-movie">
       {/* Add movie form */}
       <form onSubmit={addMovie}>
         {/* Movie Title */}
         <div>
-          <label htmlFor="movieTitle">Title</label>
+          <label htmlFor="movieTitle">Title:</label>
           <input
             type="text"
             name="movieTitle"
@@ -79,7 +79,7 @@ function AddMovie({ verbose }) {
 
         {/* Movie Poster */}
         <div>
-          <label htmlFor="moviePoster">Poster URL</label>
+          <label htmlFor="moviePoster">Poster URL:</label>
           <input
             type="text"
             name="moviePoster"
@@ -92,7 +92,7 @@ function AddMovie({ verbose }) {
 
         {/* Movie Description */}
         <div>
-          <label htmlFor="movieDescription">Description</label>
+          <label htmlFor="movieDescription">Description:</label>
           <textarea
             name="movieDescription"
             id="movieDescription"
@@ -106,7 +106,7 @@ function AddMovie({ verbose }) {
 
         {/* Movie Genre */}
         <div>
-          <label htmlFor="movieGenre">Genre</label>
+          <label htmlFor="movieGenre">Genre:</label>
           <select
             name="movieGenre"
             id="movieGenre"
@@ -123,12 +123,14 @@ function AddMovie({ verbose }) {
             })}
           </select>
         </div>
-        <button>Save</button>
+        <button className="save-button">Save</button>
       </form>
 
       {/* Button (link) to cancel adding a new movie
           Takes user back to movie list page */}
-      <Link to="/">Cancel</Link>
+      <Link className="cancel-button" to="/">
+        Cancel
+      </Link>
     </section>
   );
 }
