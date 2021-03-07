@@ -20,15 +20,7 @@ This app was designed to generate a movie list similar to IMDB. Users are presen
 
 Users have the option of adding a movie to the database through the **Add Movie** form. This form captures all of the pertinent information about a movie to be later displayed on the movie's details page.
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
-
-## Screen Shot
-
-Include one or two screen shots of your project here (optional). Remove if unused.
-
 ### Prerequisites
-
-Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
