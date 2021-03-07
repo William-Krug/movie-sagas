@@ -1,7 +1,7 @@
 /* Import Libraries */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 /**
  * Function renders the passed movie's details so that
@@ -27,10 +27,10 @@ function EditMovie({ verbose }) {
   const genres = useSelector((store) => store.genres);
 
   /* Local state variables used for capturing form input */
-  const [editTitle, setEditTitle] = useState('');
-  const [editPoster, setEditPoster] = useState('');
-  const [editDescription, setEditDescription] = useState('');
-  const [editGenre, setEditGenre] = useState('');
+  const [editTitle, setEditTitle] = useState(movie.title);
+  const [editPoster, setEditPoster] = useState(movie.poster);
+  const [editDescription, setEditDescription] = useState(movie.description);
+  const [editGenre, setEditGenre] = useState(movie.genre);
 
   /* Breadcrumbs for testing and debugging */
   if (verbose) {
@@ -50,6 +50,7 @@ function EditMovie({ verbose }) {
     dispatch({
       type: 'UPDATE_MOVIE',
       payload: {
+        id: movie.id,
         title: editTitle,
         poster: editPoster,
         description: editDescription,
@@ -64,6 +65,7 @@ function EditMovie({ verbose }) {
   return (
     <section>
       <h2>Edit Movie</h2>
+      <img src={movie.poster} alt={movie.title} />
       <form onSubmit={updateMovie}>
         {/* Movie Title */}
         <div>
@@ -72,24 +74,24 @@ function EditMovie({ verbose }) {
             type="text"
             name="movieTitle"
             id="movieTitle"
-            value={movie.title}
+            value={editTitle}
             // placeholder="Fight Club"
             onChange={(event) => setEditTitle(event.target.value)}
           />
         </div>
 
         {/* Movie Poster */}
-        <div>
+        {/* <div>
           <label htmlFor="moviePoster">Poster URL</label>
           <input
             type="text"
             name="moviePoster"
             id="moviePoster"
-            value={movie.poster}
+            value={editPoster}
             // placeholder="https://www..."
             onChange={(event) => setEditPoster(event.target.value)}
           />
-        </div>
+        </div> */}
 
         {/* Movie Description */}
         <div>
@@ -97,7 +99,7 @@ function EditMovie({ verbose }) {
           <textarea
             name="movieDescription"
             id="movieDescription"
-            value={movie.description}
+            value={editDescription}
             // placeholder="An insomniac office worker and a devil-may-care soapmaker..."
             rows="10"
             cols="50"
@@ -106,12 +108,12 @@ function EditMovie({ verbose }) {
         </div>
 
         {/* Movie Genre */}
-        <div>
+        {/* <div>
           <label htmlFor="movieGenre">Genre</label>
           <select
             name="movieGenre"
             id="movieGenre"
-            value={movie.genre[0]}
+            value={editGenre}
             onChange={(event) => setEditGenre(event.target.value)}
           >
             <option value="">Select a Genre</option>
@@ -123,7 +125,7 @@ function EditMovie({ verbose }) {
               );
             })}
           </select>
-        </div>
+        </div> */}
         <button>Save</button>
       </form>
     </section>
