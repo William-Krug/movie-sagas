@@ -9,8 +9,6 @@
 
 _Duration: 1 Weekend Sprint_
 
-Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it?
-
 This app was designed to generate a movie list similar to IMDB. Users are presented with a movie list view where they can drill into specifics about a movie by clicking on the movie poster of their choice. The details page will display a movies:
 
 - movie poster
