@@ -41,7 +41,6 @@ Users have the option of adding a movie to the database through the **Add Movie*
 1. The home page of the app will display a list of all movies stored in the database. Each movie's title and poster will be rendered to the DOM
 2. A user can click on a movie's poster to be taken to a new page with details about the selected movie
 3. A user can add a new movie by clicking on **Add Movie** where they can input a new movie's title, description, url to the movie poster, and associated genres with the movie
-4. xxx
 
 ## Built With
 
